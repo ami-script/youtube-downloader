@@ -427,7 +427,7 @@ formatDate(dateString) {
     
     try {
         const response = await fetch(
-            `http://localhost:3001/download?videoUrl=${encodeURIComponent(videoUrl)}&type=${itemData.type}&quality=${itemData.quality}`
+            `https://youtube-downloader-backend-6afo.onrender.com/download?videoUrl=${encodeURIComponent(videoUrl)}&type=${itemData.type}&quality=${itemData.quality}`
         );
         
         if (!response.ok) throw new Error('فشل التحميل');
