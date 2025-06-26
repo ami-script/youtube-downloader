@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحميل مجاني - تحميل الفيديوهات والموسيقى</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Logo based on your image -->
+                    <path d="M20 20 L50 80 L80 20 Z" fill="#1a365d"/>
+                    <circle cx="35" cy="35" r="12" fill="#ff7f39"/>
+                    <path d="M32 30 L42 35 L32 40 Z" fill="white"/>
+                    <ellipse cx="70" cy="38" rx="8" ry="6" fill="#4fd1c7"/>
+                    <circle cx="70" cy="45" r="3" fill="#ff6b85"/>
+                    <rect x="45" y="50" width="8" height="8" fill="#ffd23f"/>
+                    <path d="M40 65 L55 65 L50 75 Z" fill="#ff6b85"/>
+                </svg>
+                <h1>تحميل مجاني</h1>
+            </div>
+            <p class="subtitle">حمل الفيديوهات والموسيقى من YouTube مجاناً</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- URL Input Section -->
+            <div class="input-section">
+                <div class="input-container">
+                    <input type="url" id="videoUrl" placeholder="ضع رابط الفيديو من YouTube هنا..." />
+                    <button id="searchBtn" class="search-btn">بحث</button>
+                </div>
+            </div>
+
+            <!-- Video Info Section -->
+            <div id="videoInfo" class="video-info hidden">
+                <div class="video-thumbnail">
+                    <img id="thumbnail" src="" alt="صورة الفيديو" />
+                    <div class="video-details">
+                        <h3 id="videoTitle"></h3>
+                        <p id="videoChannel"></p>
+                        <p id="videoDuration"></p>
+                        <p id="videoViews"></p>
+                        <p id="videoPublished"></p>
+                    </div>
+                </div>
+
+                <!-- Download Options -->
+                <div class="download-options">
+                    <!-- Video Quality Section -->
+                    <div class="quality-section">
+                        <h4><i class="icon-video">🎬</i> جودة الفيديو</h4>
+                        <div class="quality-buttons" id="videoQuality">
+                            <button class="quality-btn" data-type="video" data-quality="1080p" data-format="mp4">
+                                <span class="quality">1080p HD</span>
+                                <span class="format">MP4</span>
+                            </button>
+                            <button class="quality-btn" data-type="video" data-quality="720p" data-format="mp4">
+                                <span class="quality">720p HD</span>
+                                <span class="format">MP4</span>
+                            </button>
+                            <button class="quality-btn" data-type="video" data-quality="480p" data-format="mp4">
+                                <span class="quality">480p</span>
+                                <span class="format">MP4</span>
+                            </button>
+                            <button class="quality-btn" data-type="video" data-quality="360p" data-format="mp4">
+                                <span class="quality">360p</span>
+                                <span class="format">MP4</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Audio Quality Section -->
+                    <div class="quality-section">
+                        <h4><i class="icon-music">🎵</i> جودة الموسيقى</h4>
+                        <div class="quality-buttons" id="audioQuality">
+                            <button class="quality-btn" data-type="audio" data-quality="320kbps" data-format="mp3">
+                                <span class="quality">320 kbps</span>
+                                <span class="format">MP3</span>
+                            </button>
+                            <button class="quality-btn" data-type="audio" data-quality="256kbps" data-format="mp3">
+                                <span class="quality">256 kbps</span>
+                                <span class="format">MP3</span>
+                            </button>
+                            <button class="quality-btn" data-type="audio" data-quality="128kbps" data-format="mp3">
+                                <span class="quality">128 kbps</span>
+                                <span class="format">MP3</span>
+                            </button>
+                            <button class="quality-btn" data-type="audio" data-quality="64kbps" data-format="mp3">
+                                <span class="quality">64 kbps</span>
+                                <span class="format">MP3</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Selected Downloads -->
+                    <div class="selected-downloads">
+                        <h4>المحدد للتحميل:</h4>
+                        <div id="selectedItems" class="selected-items">
+                            <p class="no-selection">لم يتم تحديد أي عنصر للتحميل</p>
+                        </div>
+                        <button id="downloadBtn" class="download-btn" disabled>
+                            <span>تحميل المحدد</span>
+                            <div class="download-icon">⬇</div>
+                        </button>
+                        <div id="downloadProgress" class="download-progress hidden">
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <p class="progress-text">جاري التحميل...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Animation -->
+            <div id="loading" class="loading hidden">
+                <div class="loading-spinner"></div>
+                <p>جاري البحث عن الفيديو...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error" class="error hidden">
+                <p></p>
+                <button onclick="this.parentElement.classList.add('hidden')" class="close-error">×</button>
+            </div>
+
+            <!-- Success Message -->
+            <div id="success" class="success hidden">
+                <p></p>
+                <button onclick="this.parentElement.classList.add('hidden')" class="close-success">×</button>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 تحميل مجاني - جميع الحقوق محفوظة</p>
+            <p class="disclaimer">⚠️ تأكد من احترام حقوق الطبع والنشر عند التحميل</p>
+            <p class="api-notice">يستخدم هذا الموقع YouTube Data API v3</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
