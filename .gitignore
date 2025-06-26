@@ -1,0 +1,9 @@
+
+---
+
+## 🔥 **نشر المشروع على GitHub**
+1. **أضف الملفات**:
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
